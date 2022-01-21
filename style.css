@@ -43,4 +43,13 @@ video{
     background-position: center;
     background-size: cover;
     padding: 25px;
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+}
+
+#play{
+    font-size: 30px;
+    height: 50px !important;
+    width: 100px !important;
+    text-align:center;
 }

@@ -58,7 +58,7 @@ GameStatus = "";
 
 function start_game(){
   GameStatus = "start";
-  document.getElementById("status").innerHTML = "Game is loading";
+  document.getElementById("status").innerHTML = "Game Loaded";
 }
 
 function game(){
@@ -108,7 +108,7 @@ function game(){
     textAlign(CENTER);
     text("GAME OVER", gameConfig.screenX/2, gameConfig.screenY/2+105);
     textSize(15);
-    text("Press SPACE to Restart", gameConfig.screenX/2, gameConfig.screenY/2+135);
+    text("Reload the website to restart", gameConfig.screenX/2, gameConfig.screenY/2+135);
     textSize(40);
     text(round(gameConfig.scores),gameConfig.screenX/2,gameConfig.screenY/2-35);
     text("points",gameConfig.screenX/2,gameConfig.screenY/2);
@@ -289,13 +289,13 @@ function autoControl(character){
 function manualControl(character){
   
   if(character.live){
-    if(noseX < 400){
+    if(noseX > 400){
       character.velocity.x-=gameConfig.moveSpeed;
       character.changeAnimation('move');
-      character.mirrorX(-1);
+      character.mirrorX(11);
     }
 
-    if(noseX > 400){
+    if(noseX < 400){
       character.velocity.x+=gameConfig.moveSpeed;
       character.changeAnimation('move');
       character.mirrorX(1);
@@ -362,13 +362,14 @@ function StepOnEnemy(obj1,obj2){
 		obj2.live=false;
     obj1.killing=30;
     obj1.kills++;
+    mario_kick.play();
     if(obj1.velocity.y>=gameConfig.jump*0.8){
       obj1.velocity.y=gameConfig.jump*0.8;
     }else{
       obj1.velocity.y+=gameConfig.jump*0.8;
     }
 	}
-  mario_kick.play();
+
 }
 
 
